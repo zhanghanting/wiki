@@ -1,4 +1,4 @@
-package bean;
+package com.pride.bean;
 
 import java.util.List;
 
@@ -21,4 +21,6 @@ public class MyPageHelper<T> {
     public void setRows(List<T> rows) {
         this.rows = rows;
     }
+
+
 }

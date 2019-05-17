@@ -13,7 +13,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="typeAliasesPackage" value="com.pride.bean"/>
+        <property name="typeAliasesPackage" value="com.pride.domain"/>
         <property name="dataSource" ref="datasource"/>
     </bean>
     <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -24,7 +24,7 @@
     </bean>
     <!--扫描包-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.zht.mapper"/>
+        <property name="basePackage" value="com.pride.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 </beans>

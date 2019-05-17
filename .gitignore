@@ -1,5 +1,9 @@
 /target
 
+log4j.properties
+src/test/
+generatorConfig.xml
+
 /.settings
 /.peoject
 /.classpath

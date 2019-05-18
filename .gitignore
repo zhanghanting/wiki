@@ -1,9 +1,11 @@
-/target
+.gitignore
 
+/target
 log4j.properties
 src/test/
-generatorConfig.xml
 
+
+/target
 /.settings
 /.peoject
 /.classpath
@@ -12,12 +14,6 @@ generatorConfig.xml
 target/
 release.properties
 
-# Eclipse
-.classpath
-.project
-.externalToolBuilders/
-.metadata
-.settings
 
 # IntelliJ
 *.iml

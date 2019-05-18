@@ -17,9 +17,9 @@
     <mvc:annotation-driven/>
     
     
-    <mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
-    <mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>g
-    <mvc:resources mapping="/image/**" location="/WEB-INF/image/"/>
+    <mvc:resources mapping="/erp/js/**" location="/WEB-INF/js/"/>
+    <mvc:resources mapping="/erp/css/**" location="/WEB-INF/css/"/>
+    <mvc:resources mapping="/erp/image/**" location="/WEB-INF/image/"/>
 
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

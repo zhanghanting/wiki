@@ -1,16 +1,16 @@
-package com.pride.bean;
+package com.pride.utils;
 
 import java.util.List;
 
 public class MyPageHelper<T> {
-    private int total;
+    private long total;
     private List<T> rows;
 
-    public int getTotal() {
+    public long getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(long total) {
         this.total = total;
     }
 

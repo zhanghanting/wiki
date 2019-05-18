@@ -11,6 +11,28 @@
     <result column="result" jdbcType="VARCHAR" property="result" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
+  <resultMap id="AddResultMap" type="com.pride.domain.vo.FinalMeasureCheckVO" extends="BaseResultMap">
+    <result column="emp_name" property="empName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!-- 查询所有记录 -->
+  <select id="find"  resultMap="AddResultMap">
+		SELECT
+			f_measure_check_id ,
+			final_measuret_check.order_id,
+			check_item,
+			cdate,
+			measure_data,
+			final_measuret_check.emp_id,
+			emp_name,
+			result,
+			final_measuret_check.note
+		FROM
+			final_measuret_check,
+			employee
+		where final_measuret_check.emp_id = employee.emp_id
+	</select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

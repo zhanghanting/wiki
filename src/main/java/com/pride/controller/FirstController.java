@@ -24,10 +24,12 @@ public class FirstController
         sysPermissionList.add("order:add");
         sysPermissionList.add("order:edit");
         sysPermissionList.add("order:delete");
+        sysPermissionList.add("unqualify:add");
+        sysPermissionList.add("unqualify:edit");
+        sysPermissionList.add("unqualify:delete");
         sysPermissionList.add("technology:add");
         sysPermissionList.add("technology:edit");
         sysPermissionList.add("technology:delete");
-
         session.setAttribute("sysPermissionList",sysPermissionList);
         return "home";
     }

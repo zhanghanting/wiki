@@ -3,6 +3,8 @@ package com.pride.mapper;
 import com.pride.domain.ProcessCountCheck;
 import com.pride.domain.ProcessCountCheckExample;
 import java.util.List;
+
+import com.pride.domain.vo.ProcessCountCheckVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface ProcessCountCheckMapper {
@@ -27,4 +29,5 @@ public interface ProcessCountCheckMapper {
     int updateByPrimaryKeySelective(ProcessCountCheck record);
 
     int updateByPrimaryKey(ProcessCountCheck record);
+    List<ProcessCountCheckVO> find();
 }

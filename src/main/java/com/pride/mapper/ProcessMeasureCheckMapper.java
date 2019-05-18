@@ -3,6 +3,8 @@ package com.pride.mapper;
 import com.pride.domain.ProcessMeasureCheck;
 import com.pride.domain.ProcessMeasureCheckExample;
 import java.util.List;
+
+import com.pride.domain.vo.ProcessMeasureCheckVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface ProcessMeasureCheckMapper {
@@ -27,4 +29,5 @@ public interface ProcessMeasureCheckMapper {
     int updateByPrimaryKeySelective(ProcessMeasureCheck record);
 
     int updateByPrimaryKey(ProcessMeasureCheck record);
+    List<ProcessMeasureCheckVO> find();
 }

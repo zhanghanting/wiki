@@ -15,6 +15,32 @@
     <result column="result" jdbcType="VARCHAR" property="result" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
+  <resultMap id="AddResultMap" type="com.pride.domain.vo.FinalCountCheckVO" extends="BaseResultMap">
+    <result column="emp_name" property="empName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!-- 查询所有记录 -->
+  <select id="find"  resultMap="AddResultMap">
+		SELECT
+			f_count_check_id ,
+			order_id,
+			check_item,
+			sample,
+			check_number,
+			unqualify,
+			qualify,
+			cdate,
+			measure_data,
+			final_count_check.emp_id,
+			emp_name,
+			result,
+			final_count_check.note
+		FROM
+			final_count_check,
+			employee
+		WHERE
+			final_count_check.emp_id = employee.emp_id
+	</select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

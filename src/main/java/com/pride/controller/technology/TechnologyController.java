@@ -40,15 +40,31 @@ public class TechnologyController {
         return "technology_list";
     }
 
-
-
-    @RequestMapping("/add")
+    @RequestMapping("/add_judge")
+    @ResponseBody
     public String add(){
         return "technology_add";
     }
 
-    @RequestMapping("/edit")
+    @RequestMapping("/add")
+    public String add1(){
+        return "technology_add";
+    }
+
+    @RequestMapping("/edit_judge")
+    @ResponseBody
     public String edit(){
+        return null;
+    }
+
+    @RequestMapping("/delete_judge")
+    @ResponseBody
+    public String delete(){
+        return null;
+    }
+
+    @RequestMapping("/edit")
+    public String edit1(){
         return "technology_edit";
     }
 

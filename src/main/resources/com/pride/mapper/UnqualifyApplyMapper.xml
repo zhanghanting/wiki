@@ -17,7 +17,7 @@
   </resultMap>
 
   <!-- 查询所有记录 -->
-  <select id="find" parameterType="unqualifyApply" resultMap="AddResultMap">
+  <select id="find"  resultMap="AddResultMap">
 		SELECT
 			unqualify_apply_id,
 			unqualify_apply.product_id,

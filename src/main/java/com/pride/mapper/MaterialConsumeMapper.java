@@ -1,6 +1,6 @@
 package com.pride.mapper;
 
-import com.pride.domain.MaterialConsume;
+import com.pride.domain.material.MaterialConsume;
 import com.pride.domain.MaterialConsumeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -27,4 +27,6 @@ public interface MaterialConsumeMapper {
     int updateByPrimaryKeySelective(MaterialConsume record);
 
     int updateByPrimaryKey(MaterialConsume record);
+
+    List<MaterialConsume> queryMaterialConsumeList();
 }

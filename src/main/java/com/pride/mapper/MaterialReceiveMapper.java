@@ -1,8 +1,10 @@
 package com.pride.mapper;
 
-import com.pride.domain.MaterialReceive;
+
 import com.pride.domain.MaterialReceiveExample;
 import java.util.List;
+
+import com.pride.domain.material.MaterialReceive;
 import org.apache.ibatis.annotations.Param;
 
 public interface MaterialReceiveMapper {
@@ -27,4 +29,6 @@ public interface MaterialReceiveMapper {
     int updateByPrimaryKeySelective(MaterialReceive record);
 
     int updateByPrimaryKey(MaterialReceive record);
+
+    List<MaterialReceive> queryMaterialReceiveList();
 }

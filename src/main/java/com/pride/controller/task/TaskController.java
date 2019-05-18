@@ -23,7 +23,6 @@ public class TaskController {
     public String find(){
         return "task_list";
     }
-
     @RequestMapping("list")
     @ResponseBody
     public MyPageHelper<Task> list(Integer page,Integer rows){

@@ -3,13 +3,16 @@ package com.pride.mapper;
 import com.pride.domain.Corder;
 import com.pride.domain.CorderExample;
 import java.util.List;
+
+import com.pride.domain.order.OrderPageType;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 public interface CorderMapper {
 
-    @Select("select * from c_order")
-    List<Corder> selectAllCorder();
+
+    List<OrderPageType> viewAllOrders();
+
     long countByExample(CorderExample example);
 
     int deleteByExample(CorderExample example);

@@ -3,9 +3,14 @@ package com.pride.mapper;
 import com.pride.domain.Work;
 import com.pride.domain.WorkExample;
 import java.util.List;
+
+import com.pride.domain.work.WorkPageType;
 import org.apache.ibatis.annotations.Param;
 
 public interface WorkMapper {
+
+    List<WorkPageType> viewAllWorks();
+
     long countByExample(WorkExample example);
 
     int deleteByExample(WorkExample example);

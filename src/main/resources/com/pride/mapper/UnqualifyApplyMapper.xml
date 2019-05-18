@@ -11,6 +11,33 @@
     <result column="apply_date" jdbcType="TIMESTAMP" property="applyDate" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
+  <resultMap id="AddResultMap" type="com.pride.domain.vo.UnqualifyApplyVO" extends="BaseResultMap">
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="emp_name" property="empName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!-- 查询所有记录 -->
+  <select id="find" parameterType="unqualifyApply" resultMap="AddResultMap">
+		SELECT
+			unqualify_apply_id,
+			unqualify_apply.product_id,
+			unqualify_item,
+			product_name,
+			unqualify_apply.emp_id,
+			emp_name,
+			unqualify_count,
+			assembly_date,
+			apply_date,
+			unqualify_apply.note
+		FROM
+			unqualify_apply,
+			employee,
+			product
+		WHERE
+			unqualify_apply.product_id = product.product_id
+		AND unqualify_apply.emp_id = employee.emp_id
+		ORDER BY unqualify_apply.apply_date
+	</select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

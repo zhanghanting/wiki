@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pride.mapper.WorkMapper">
+
+
+
+  <resultMap id="viewAllWorkPageType" type="com.pride.domain.work.WorkPageType">
+    <result column="work_id" jdbcType="VARCHAR" property="workId" />
+    <result column="process_number" jdbcType="VARCHAR" property="processNumber" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" />
+    <result column="process_id" jdbcType="VARCHAR" property="processId" />
+    <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+    <result column="rating" jdbcType="INTEGER" property="rating" />
+    <association property="product" column="product_id" select="com.pride.mapper.ProductMapper.selectByPrimaryKey"/>
+    <association property="process" column="process_id" select="com.pride.mapper.ProcessMapper.selectByPrimaryKey"/>
+    <association property="device" column="device_id" select="com.pride.mapper.DeviceMapper.selectByPrimaryKey"/>
+  </resultMap>
+  <select id="viewAllWorks" resultMap="viewAllWorkPageType">
+    select <include refid="Base_Column_List"/> from work
+  </select>
   <resultMap id="BaseResultMap" type="com.pride.domain.Work">
     <id column="work_id" jdbcType="VARCHAR" property="workId" />
     <result column="process_number" jdbcType="VARCHAR" property="processNumber" />

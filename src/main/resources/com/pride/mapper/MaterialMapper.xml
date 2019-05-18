@@ -83,6 +83,13 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <!--修改了查询MaterialList-->
+  <select id="queryMaterialList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from material
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

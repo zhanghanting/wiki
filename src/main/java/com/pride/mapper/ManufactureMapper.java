@@ -3,9 +3,13 @@ package com.pride.mapper;
 import com.pride.domain.Manufacture;
 import com.pride.domain.ManufactureExample;
 import java.util.List;
+
+import com.pride.domain.manufacture.ManufacturePageType;
 import org.apache.ibatis.annotations.Param;
 
 public interface ManufactureMapper {
+    List<ManufacturePageType> viewAllManufacturePageType();
+
     long countByExample(ManufactureExample example);
 
     int deleteByExample(ManufactureExample example);

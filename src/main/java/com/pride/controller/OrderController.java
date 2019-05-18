@@ -1,5 +1,5 @@
 package com.pride.controller;
-
+import com.pride.bean.MyPageHelper;
 import com.pride.bean.MyPageHelper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -11,23 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.pride.service.CorderService;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
 @Controller
 @RequestMapping("/erp/order/")
 public class OrderController {
 
     @Autowired
     CorderService corderService;
-
-
-
 
     @ResponseBody
     @RequestMapping("find")

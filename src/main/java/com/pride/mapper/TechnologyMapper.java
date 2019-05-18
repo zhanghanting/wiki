@@ -10,8 +10,8 @@ public interface TechnologyMapper {
 
     //扩展的mapper接口
     int deleteBatch(String[] ids);
-    List<Technology> serchTechnologyByTechnologyId(String technologyId);
-    List<Technology> sarchTechnologyByTechnologyName(String technologyName);
+    List<Technology> searchTechnologyByTechnologyId(String technologyId);
+    List<Technology> searchTechnologyByTechnologyName(String technologyName);
 
 
 

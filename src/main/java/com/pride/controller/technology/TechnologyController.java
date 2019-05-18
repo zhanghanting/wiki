@@ -26,9 +26,10 @@ import java.util.List;
 public class TechnologyController {
 
     @Autowired
-    TechnologyService technologyService;
+    private TechnologyService technologyService;
 
     @RequestMapping("/get/{technologyId}")
+    @ResponseBody
     public Technology getItemById(@PathVariable("technologyId") String technologyId){
         Technology technology = technologyService.get(technologyId);
         return technology;
@@ -38,6 +39,8 @@ public class TechnologyController {
     public String find(){
         return "technology_list";
     }
+
+
 
     @RequestMapping("/add")
     public String add(){
@@ -90,7 +93,6 @@ public class TechnologyController {
         }
         return technologyService.updateAll(technology);
     }
-
 
 
 

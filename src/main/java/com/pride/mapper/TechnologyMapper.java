@@ -6,6 +6,16 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TechnologyMapper {
+
+
+    //扩展的mapper接口
+    int deleteBatch(String[] ids);
+    List<Technology> serchTechnologyByTechnologyId(String technologyId);
+    List<Technology> sarchTechnologyByTechnologyName(String technologyName);
+
+
+
+    //逆向工程生产的mapper接口
     long countByExample(TechnologyExample example);
 
     int deleteByExample(TechnologyExample example);

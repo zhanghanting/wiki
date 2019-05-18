@@ -22,7 +22,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/technology")
+@RequestMapping("/erp/technology")
 public class TechnologyController {
 
     @Autowired

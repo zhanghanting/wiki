@@ -20,9 +20,14 @@ public class UnqualifyApplyController
 {
     @Autowired
     private UnqualifyService unqualifyService;
-    @RequestMapping("/list")
+    @RequestMapping("/find")
+    public String find()
+    {
+        return "unqualify_list";
+    }
     @ResponseBody
-    public MyPageHelper<UnqualifyApplyVO> getList(Integer page,Integer rows,UnqualifyApply unqualifyApply)
+    @RequestMapping("/list")
+    public MyPageHelper<UnqualifyApplyVO> getList(Integer page,Integer rows)
     {
         PageHelper.startPage(page,rows);
         //获取不合格品的所有管理信息

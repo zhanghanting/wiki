@@ -15,6 +15,33 @@
     <result column="result" jdbcType="VARCHAR" property="result" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
+  <resultMap id="AddResultMap" type="com.pride.domain.vo.ProcessCountCheckVO" extends="BaseResultMap">
+    <result column="emp_name" property="empName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!-- 查询所有记录 -->
+  <select id="find" resultMap="AddResultMap">
+		SELECT
+			p_count_check_id,
+			process_id,
+			check_item,
+			sample,
+			check_number,
+			unqualify,
+			qualify,
+			cdate,
+			measure_data,
+			process_count_check.emp_id,
+			emp_name,
+			result,
+			note
+		FROM
+			process_count_check,
+			employee
+		WHERE
+			process_count_check.emp_id = employee.emp_id
+	</select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

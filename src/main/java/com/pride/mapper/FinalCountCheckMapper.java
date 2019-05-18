@@ -3,6 +3,8 @@ package com.pride.mapper;
 import com.pride.domain.FinalCountCheck;
 import com.pride.domain.FinalCountCheckExample;
 import java.util.List;
+
+import com.pride.domain.vo.FinalCountCheckVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface FinalCountCheckMapper {
@@ -27,4 +29,5 @@ public interface FinalCountCheckMapper {
     int updateByPrimaryKeySelective(FinalCountCheck record);
 
     int updateByPrimaryKey(FinalCountCheck record);
+    List<FinalCountCheckVO> find();
 }

@@ -3,6 +3,8 @@ package com.pride.mapper;
 import com.pride.domain.FinalMeasuretCheck;
 import com.pride.domain.FinalMeasuretCheckExample;
 import java.util.List;
+
+import com.pride.domain.vo.FinalMeasureCheckVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface FinalMeasuretCheckMapper {
@@ -27,4 +29,5 @@ public interface FinalMeasuretCheckMapper {
     int updateByPrimaryKeySelective(FinalMeasuretCheck record);
 
     int updateByPrimaryKey(FinalMeasuretCheck record);
+    List<FinalMeasureCheckVO> find();
 }

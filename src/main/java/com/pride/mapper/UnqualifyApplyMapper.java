@@ -3,6 +3,8 @@ package com.pride.mapper;
 import com.pride.domain.UnqualifyApply;
 import com.pride.domain.UnqualifyApplyExample;
 import java.util.List;
+
+import com.pride.domain.vo.UnqualifyApplyVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface UnqualifyApplyMapper {
@@ -27,4 +29,6 @@ public interface UnqualifyApplyMapper {
     int updateByPrimaryKeySelective(UnqualifyApply record);
 
     int updateByPrimaryKey(UnqualifyApply record);
+    //获取所有的不合格品管理信息
+    List<UnqualifyApplyVO> find();
 }

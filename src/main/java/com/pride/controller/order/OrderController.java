@@ -1,5 +1,6 @@
 package com.pride.controller.order;
 
+import com.pride.domain.order.OrderPageType;
 import com.pride.utils.MyPageHelper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -20,23 +21,22 @@ public class OrderController {
     CorderService corderService;
 
 
-
-
     @RequestMapping("find")
     public String find() {
         return "order_list";
     }
 
+    // 返回分页的OrderPageType的List
     @ResponseBody
     @RequestMapping("list")
-    public MyPageHelper<Corder> query(Integer page,Integer rows){
+    public MyPageHelper<OrderPageType> query(Integer page, Integer rows) {
         PageHelper.startPage(page, rows);
-        List<Corder> corders = corderService.queryCorders();
-        PageInfo<Corder> corderPageInfo = new PageInfo<>(corders);
-        MyPageHelper myPageHelper = new MyPageHelper();
-        myPageHelper.setRows(corders);
-        myPageHelper.setTotal(corderPageInfo.getTotal());
-        return myPageHelper;
+        List<OrderPageType> corders = corderService.viewAllOrders();
+        PageInfo<OrderPageType> pageInfo = new PageInfo<>(corders);
+        MyPageHelper pageHelper = new MyPageHelper();
+        pageHelper.setRows(corders);
+        pageHelper.setTotal(pageInfo.getTotal());
+        return pageHelper;
     }
 
 }

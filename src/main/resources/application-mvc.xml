@@ -14,8 +14,16 @@
         <context:include-filter type="annotation"   expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="format"/>
 
+
+    <bean id="format" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.pride.filter.DateFileFilter"/>
+            </set>
+        </property>
+    </bean>
     <mvc:resources mapping="/erp/js/**" location="/WEB-INF/js/"/>
     <mvc:resources mapping="/erp/css/**" location="/WEB-INF/css/"/>
     <mvc:resources mapping="/erp/image/**" location="/WEB-INF/image/"/>

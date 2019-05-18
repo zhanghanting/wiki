@@ -29,12 +29,6 @@ public class WorkController {
     @ResponseBody
     @RequestMapping("list")
     public MyPageHelper<WorkPageType> list(Integer page, Integer rows){
-        PageHelper.startPage(page,rows);
-        List<WorkPageType> workPageTypes = workService.viewAllWorks();
-        PageInfo<WorkPageType> pageInfo = new PageInfo<>(workPageTypes);
-        MyPageHelper<WorkPageType> pageHelper = new MyPageHelper<>();
-        pageHelper.setTotal(pageInfo.getTotal());
-        pageHelper.setRows(workPageTypes);
-        return pageHelper;
+        return workService.viewPageWorks(page,rows);
     }
 }

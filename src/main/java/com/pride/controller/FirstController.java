@@ -27,6 +27,9 @@ public class FirstController
         sysPermissionList.add("unqualify:add");
         sysPermissionList.add("unqualify:edit");
         sysPermissionList.add("unqualify:delete");
+        sysPermissionList.add("technology:add");
+        sysPermissionList.add("technology:edit");
+        sysPermissionList.add("technology:delete");
         session.setAttribute("sysPermissionList",sysPermissionList);
         return "home";
     }

@@ -7,6 +7,7 @@ import com.pride.service.product.ProductService;
 import com.pride.utils.MyPageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,23 +19,43 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+
+    // 返回product主页面
     @RequestMapping("find")
     public String find(){
         return "product_list";
     }
-
-
     // 返回分页的Product的List
+    // json
     @ResponseBody
     @RequestMapping("list")
     public MyPageHelper<Product> list(Integer page,Integer rows){
-        PageHelper.startPage(page,rows);
-        List<Product> products = productService.viewAllProducts();
-        PageInfo<Product> pageInfo = new PageInfo<>(products);
-        MyPageHelper<Product> pageHelper = new MyPageHelper<>();
-        pageHelper.setRows(products);
-        pageHelper.setTotal(pageInfo.getTotal());
-        return pageHelper;
+        return productService.viewPageProducts(page,rows);
     }
 
+
+    // 通过id修改product
+    // json
+    @ResponseBody
+    @RequestMapping("get/{id}")
+    public Product getCustom(@PathVariable String id){
+        return productService.selectProductById(id);
+    }
+
+
+    // 获取Product的所有数据
+    // json
+    @ResponseBody
+    @RequestMapping("get_data")
+    public List<Product> getData(){
+        return productService.viewAllProducts();
+    }
+
+
+    // 返回product的添加页面
+    @RequestMapping("add")
+    public String addJudge(){
+        return "product_add";
+    }
+    // 通过id
 }

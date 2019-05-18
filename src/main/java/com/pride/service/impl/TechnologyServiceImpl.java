@@ -89,7 +89,7 @@ public class TechnologyServiceImpl implements TechnologyService {
     public MyPageHelper searchTechnologyByTechnologyId(Integer page, Integer rows, String technologyId) {
         //分页处理
         PageHelper.startPage(page,rows);
-        List<Technology> technologyList = technologyMapper.serchTechnologyByTechnologyId(technologyId);
+        List<Technology> technologyList = technologyMapper.searchTechnologyByTechnologyId(technologyId);
 
         //创建一个返回值对象
         MyPageHelper result = new MyPageHelper();
@@ -106,7 +106,7 @@ public class TechnologyServiceImpl implements TechnologyService {
     public MyPageHelper searchTechnologyByTechnologyName(Integer page, Integer rows, String technologyName) {
         //分页处理
         PageHelper.startPage(page,rows);
-        List<Technology> technologyList = technologyMapper.sarchTechnologyByTechnologyName(technologyName);
+        List<Technology> technologyList = technologyMapper.searchTechnologyByTechnologyName(technologyName);
 
         //创建一个返回值对象
         MyPageHelper result = new MyPageHelper();

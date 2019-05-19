@@ -46,10 +46,6 @@ public class FirstController
         sysPermissionList.add("unqualify:edit");
         sysPermissionList.add("unqualify:delete");
 
-        sysPermissionList.add("technology:add");
-        sysPermissionList.add("technology:edit");
-        sysPermissionList.add("technology:delete");
-
         sysPermissionList.add("device:add");
         sysPermissionList.add("device:edit");
         sysPermissionList.add("device:delete");
@@ -57,13 +53,19 @@ public class FirstController
         sysPermissionList.add("deviceType:edit");
         sysPermissionList.add("deviceType:delete");
 
+        //工艺监控-工艺管理
+        sysPermissionList.add("technology:add");
+        sysPermissionList.add("technology:edit");
+        sysPermissionList.add("technology:delete");
+        //工艺监控-工艺要求
         sysPermissionList.add("technologyRequirement:add");
         sysPermissionList.add("technologyRequirement:edit");
         sysPermissionList.add("technologyRequirement:delete");
-
+        //工艺监控-工艺计划
         sysPermissionList.add("technologyPlan:add");
         sysPermissionList.add("technologyPlan:edit");
         sysPermissionList.add("technologyPlan:delete");
+        //工艺监控-工序管理
         sysPermissionList.add("process:add");
         sysPermissionList.add("process:edit");
         sysPermissionList.add("process:delete");

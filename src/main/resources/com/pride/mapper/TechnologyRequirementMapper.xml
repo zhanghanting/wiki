@@ -17,7 +17,6 @@
   </resultMap>
 
   <select id="find" resultMap="AddResultMap">
-
    SELECT
 		technology_requirement_id,
 		technology_requirement.technology_id,
@@ -33,11 +32,64 @@
 
   </select>
 
-  <!--根据工艺要求id进行查找-->
 
+  <!--修改备注-->
+  <update id="updateRequirement" parameterType="com.pride.domain.TechnologyRequirement" >
+		UPDATE technology_requirement
+		SET requirement = #{requirement}
+		WHERE
+			technology_requirement_id = #{technologyRequirementId,jdbcType=VARCHAR}
+	</update>
+
+
+  <!--批量删除-->
+  <delete id="deleteBatch">
+    DELETE
+    FROM
+    technology_requirement
+    WHERE
+    technology_requirement_id IN
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+
+
+  <!--根据工艺要求id进行查找-->
+  <select id="searchTechnologyRequirementByTechnologyRequirementId" parameterType="string" resultMap="AddResultMap">
+		SELECT
+			technology_requirement_id,
+			technology_requirement.technology_id,
+			technology_name,
+			requirement,
+			add_time,
+			revise_time
+		FROM
+			technology_requirement
+		LEFT JOIN technology ON technology.technology_id = technology_requirement.technology_id
+		WHERE
+			technology_requirement_id LIKE CONCAT('%',#{technologyRequirementId},'%' )
+		ORDER BY
+			technology_requirement_id ASC
+	</select>
 
   <!--根据工艺名称进行查找-->
-
+  <select id="searchTechnologyRequirementByTechnologyName" parameterType="string" resultMap="AddResultMap">
+		SELECT
+			technology_requirement_id,
+			technology_requirement.technology_id,
+			technology_name,
+			requirement,
+			add_time,
+			revise_time
+		FROM
+			technology_requirement
+		LEFT JOIN technology ON technology.technology_id = technology_requirement.technology_id
+		WHERE
+			technology_name LIKE CONCAT('%',#{technologyName},'%' )
+		ORDER BY
+			technology_requirement_id ASC
+	</select>
 
 
   <sql id="Example_Where_Clause">

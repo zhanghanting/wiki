@@ -32,9 +32,9 @@ public class FMeasurementController
         List<FinalMeasureCheckVO> finalMeasureCheckVOS = finalMeasureCheckService.queryFinalMeasureCheckVO();
         //将获取的信息封装为page
         PageInfo<FinalMeasureCheckVO> finalMeasureCheckPageInfo = new PageInfo<>(finalMeasureCheckVOS );
-        MyPageHelper myPageHelper = new MyPageHelper();
-        myPageHelper.setRows(finalMeasureCheckVOS);
-        myPageHelper.setTotal(finalMeasureCheckPageInfo.getTotal());
-        return myPageHelper;
+        MyPageHelper MyPageHelper = new MyPageHelper();
+        MyPageHelper.setRows(finalMeasureCheckVOS);
+        MyPageHelper.setTotal(finalMeasureCheckPageInfo.getTotal());
+        return MyPageHelper;
     }
 }

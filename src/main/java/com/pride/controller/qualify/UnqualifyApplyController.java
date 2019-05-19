@@ -34,10 +34,10 @@ public class UnqualifyApplyController
         List<UnqualifyApplyVO> unqualifyApplyVOList = unqualifyService.queryUnqualifyApplyVOList();
         //将获取的信息封装为page
         PageInfo<UnqualifyApplyVO> unqualifyApplyVOPageInfo = new PageInfo<>(unqualifyApplyVOList);
-        MyPageHelper myPageHelper = new MyPageHelper();
-        myPageHelper.setRows(unqualifyApplyVOList);
-        myPageHelper.setTotal(unqualifyApplyVOPageInfo.getTotal());
-        return myPageHelper;
+        MyPageHelper MyPageHelper = new MyPageHelper();
+        MyPageHelper.setRows(unqualifyApplyVOList);
+        MyPageHelper.setTotal(unqualifyApplyVOPageInfo.getTotal());
+        return MyPageHelper;
     }
 
 }

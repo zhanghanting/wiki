@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TechnologyPlanMapper {
+    //逆向工程生成的mapper接口
     long countByExample(TechnologyPlanExample example);
 
     int deleteByExample(TechnologyPlanExample example);
@@ -27,4 +28,18 @@ public interface TechnologyPlanMapper {
     int updateByPrimaryKeySelective(TechnologyPlan record);
 
     int updateByPrimaryKey(TechnologyPlan record);
+
+    //扩展的mapper接口方法
+    List<TechnologyPlan> find(TechnologyPlan technologyPlan);
+
+    int deleteBatch(String[] ids);
+
+    List<TechnologyPlan> searchTechnologyPlanByTechnologyPlanId(
+            String technologyPlanId);
+
+    List<TechnologyPlan> searchTechnologyPlanByTechnologyName(
+            String technologyName);
+
+
+
 }

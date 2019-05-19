@@ -32,10 +32,10 @@ public class PCountCheckController
         List<ProcessCountCheckVO> processCountCheckVOS = processCountCheckService.queryProcessCountCheckVO();
         //将获取的信息封装为page
         PageInfo<ProcessCountCheckVO> processCountCheckVOPageInfo = new PageInfo<>(processCountCheckVOS);
-        MyPageHelper myPageHelper = new MyPageHelper();
-        myPageHelper.setRows(processCountCheckVOS);
-        myPageHelper.setTotal(processCountCheckVOPageInfo.getTotal());
-        return myPageHelper;
+        MyPageHelper MyPageHelper = new MyPageHelper();
+        MyPageHelper.setRows(processCountCheckVOS);
+        MyPageHelper.setTotal(processCountCheckVOPageInfo.getTotal());
+        return MyPageHelper;
     }
 
 

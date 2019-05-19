@@ -33,6 +33,14 @@ public class FirstController
         sysPermissionList.add("technologyRequirement:add");
         sysPermissionList.add("technologyRequirement:edit");
         sysPermissionList.add("technologyRequirement:delete");
+        sysPermissionList.add("technologyPlan:add");
+        sysPermissionList.add("technologyPlan:edit");
+        sysPermissionList.add("technologyPlan:delete");
+        sysPermissionList.add("process:add");
+        sysPermissionList.add("process:edit");
+        sysPermissionList.add("process:delete");
+
+
         session.setAttribute("sysPermissionList",sysPermissionList);
         return "home";
     }

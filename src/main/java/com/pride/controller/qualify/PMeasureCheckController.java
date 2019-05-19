@@ -32,9 +32,9 @@ public class PMeasureCheckController
         List<ProcessMeasureCheckVO> processMeasureCheckVOS = processMeasureCheckService.queryProcessMeasureCheckVO();
         //将获取的信息封装为page
         PageInfo<ProcessMeasureCheckVO> processMeasureCheckVOPageInfo = new PageInfo<>(processMeasureCheckVOS);
-        MyPageHelper myPageHelper = new MyPageHelper();
-        myPageHelper.setRows(processMeasureCheckVOS);
-        myPageHelper.setTotal(processMeasureCheckVOPageInfo.getTotal());
-        return myPageHelper;
+        MyPageHelper MyPageHelper = new MyPageHelper();
+        MyPageHelper.setRows(processMeasureCheckVOS);
+        MyPageHelper.setTotal(processMeasureCheckVOPageInfo.getTotal());
+        return MyPageHelper;
     }
 }

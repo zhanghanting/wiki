@@ -34,5 +34,15 @@ public interface TechnologyRequirementMapper {
 
 
     //扩展的mapper接口方法
+    int updateRequirement(TechnologyRequirement technologyRequirement);
+
     List<TechnologyRequirementVO> find(TechnologyRequirement technologyRequirement);
+
+    int deleteBatch(String[] ids);
+
+    List<TechnologyRequirementVO> searchTechnologyRequirementByTechnologyRequirementId(
+            String technologyRequirementId);
+
+    List<TechnologyRequirementVO> searchTechnologyRequirementByTechnologyName(
+            String technologyName);
 }

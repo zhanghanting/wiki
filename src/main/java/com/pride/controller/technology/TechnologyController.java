@@ -28,53 +28,13 @@ public class TechnologyController {
     @Autowired
     private TechnologyService technologyService;
 
-    @RequestMapping("/get/{technologyId}")
-    @ResponseBody
-    public Technology getItemById(@PathVariable("technologyId") String technologyId){
-        Technology technology = technologyService.get(technologyId);
-        return technology;
-    }
-
+    //返回technology_list页面
     @RequestMapping("/find")
     public String find(){
         return "technology_list";
     }
 
-    @RequestMapping("/add_judge")
-    @ResponseBody
-    public String add(){
-        return "technology_add";
-    }
-
-    @RequestMapping("/add")
-    public String add1(){
-        return "technology_add";
-    }
-
-    @RequestMapping("/edit_judge")
-    @ResponseBody
-    public String edit(){
-        return null;
-    }
-
-    @RequestMapping("/delete_judge")
-    @ResponseBody
-    public String delete(){
-        return null;
-    }
-
-    @RequestMapping("/edit")
-    public String edit1(){
-        return "technology_edit";
-    }
-
-    @RequestMapping("/get_data")
-    @ResponseBody
-    public List<Technology> getData(){
-        List<Technology> list = technologyService.find();
-        return list;
-    }
-
+    //返回分页的Technology的list
     @RequestMapping("/list")
     @ResponseBody
     public MyPageHelper getItemList(Integer page, Integer rows, Technology technology){
@@ -83,6 +43,20 @@ public class TechnologyController {
     }
 
 
+    //返回空的json
+    @RequestMapping("/add_judge")
+    @ResponseBody
+    public String addJudge(){
+        return "null";
+    }
+
+    //返回technology_add页面
+    @RequestMapping("/add")
+    public String add(){
+        return "technology_add";
+    }
+
+    //新增数据
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     @ResponseBody
     private JsonUtil insert(@Valid Technology technology, BindingResult bindingResult){
@@ -100,6 +74,21 @@ public class TechnologyController {
         return result;
     }
 
+
+    //返回空的json
+    @RequestMapping("/edit_judge")
+    @ResponseBody
+    public String editJudege(){
+        return null;
+    }
+
+    //返回technology_edit页面
+    @RequestMapping("/edit")
+    public String edit(){
+        return "technology_edit";
+    }
+
+    //更新数据
     @RequestMapping(value = "/update_all")
     @ResponseBody
     private JsonUtil updateAll(@Valid Technology technology, BindingResult bindingResult){
@@ -111,8 +100,14 @@ public class TechnologyController {
     }
 
 
+    //返回空的json
+    @RequestMapping("/delete_judge")
+    @ResponseBody
+    public String deleteJudge(){
+        return null;
+    }
 
-    //批量删除
+    //删除数据
     @RequestMapping(value = "/delete_batch")
     @ResponseBody
     private JsonUtil deleteBatch(String[] ids){
@@ -121,6 +116,20 @@ public class TechnologyController {
     }
 
 
+    @RequestMapping("/get/{technologyId}")
+    @ResponseBody
+    public Technology getItemById(@PathVariable("technologyId") String technologyId){
+        Technology technology = technologyService.get(technologyId);
+        return technology;
+    }
+
+
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Technology> getData(){
+        List<Technology> list = technologyService.find();
+        return list;
+    }
 
     //根据工艺编号查找
     @RequestMapping("/search_technology_by_technologyId")

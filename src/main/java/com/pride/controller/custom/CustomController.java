@@ -1,9 +1,7 @@
 package com.pride.controller.custom;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+
 import com.pride.domain.Custom;
-import com.pride.domain.Product;
 import com.pride.domain.typecode.TypeCode;
 import com.pride.service.custom.CustomService;
 import com.pride.utils.MyPageHelper;
@@ -22,30 +20,42 @@ public class CustomController {
     @Autowired
     CustomService customService;
 
+
     // 跳转到custom的主页面
     @RequestMapping("find")
     public String find(){
         return "custom_list";
     }
     // 返回分页的Custom的List
-    // json
     @ResponseBody
     @RequestMapping("list")
     public MyPageHelper<Custom> list(Integer page,Integer rows){
         return customService.viewPageCustoms(page,rows);
     }
 
+
     //通过id查询custom
-    // json
     @ResponseBody
     @RequestMapping("get/{id}")
     public Custom getCustom(@PathVariable String id){
         return customService.selectCustomById(id);
     }
+    // 通过customId模糊查询
+    @ResponseBody
+    @RequestMapping("search_custom_by_customId")
+    public MyPageHelper<Custom> searchCustomByCustomId(String searchValue,Integer page,Integer rows){
+        return customService.searchCustomByCustomId(searchValue,page,rows);
+    }
+    // 通过customName模糊查询
+    @ResponseBody
+    @RequestMapping("search_custom_by_customName")
+    public MyPageHelper<Custom> searchCustomByCustomName(String searchValue,Integer page,Integer rows){
+        return customService.searchCustomByCustomName(searchValue,page,rows);
+    }
+
 
 
     //返回所有的Custom
-    // json
     @ResponseBody
     @RequestMapping("get_data")
     public List<Custom> getData(){
@@ -64,8 +74,6 @@ public class CustomController {
     public String addJudge(){
         return null;
     }
-
-
     // 通过custom的实例新增数据
     // 返回json的状态码
     @ResponseBody

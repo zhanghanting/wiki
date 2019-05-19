@@ -97,13 +97,15 @@ public class ManuFactureServiceImpl implements ManuFactureService{
 
     @Override
     public MyPageHelper<ManufacturePageType> searchManufactureByManufactureOrderId(String searchValue, Integer page, Integer rows) {
-        searchValue = "'%" + searchValue + "%'";
+        ManufactureExample manufactureExample = new ManufactureExample();
+        ManufactureExample.Criteria criteria = manufactureExample.createCriteria();
+        criteria.andOrderIdLike("%" + searchValue + "%");
         PageHelper.startPage(page,rows);
-        List<ManufacturePageType> manufacturePageTypes = manufacturePageTypeMapper.searchManufactureByManufactureOrderId(searchValue);
+        List<ManufacturePageType> manufacturePageTypes = viewSearchPage(manufactureExample);
         PageInfo<ManufacturePageType> pageInfo = new PageInfo<>(manufacturePageTypes);
         MyPageHelper<ManufacturePageType> pageHelper = new MyPageHelper<>();
-        pageHelper.setTotal(pageInfo.getTotal());
         pageHelper.setRows(manufacturePageTypes);
+        pageHelper.setTotal(pageInfo.getTotal());
         return pageHelper;
     }
 

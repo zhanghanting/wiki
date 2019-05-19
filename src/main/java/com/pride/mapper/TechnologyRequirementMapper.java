@@ -3,9 +3,13 @@ package com.pride.mapper;
 import com.pride.domain.TechnologyRequirement;
 import com.pride.domain.TechnologyRequirementExample;
 import java.util.List;
+
+import com.pride.domain.vo.TechnologyRequirementVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface TechnologyRequirementMapper {
+
+    //逆向工程生成的mapper接口
     long countByExample(TechnologyRequirementExample example);
 
     int deleteByExample(TechnologyRequirementExample example);
@@ -27,4 +31,8 @@ public interface TechnologyRequirementMapper {
     int updateByPrimaryKeySelective(TechnologyRequirement record);
 
     int updateByPrimaryKey(TechnologyRequirement record);
+
+
+    //扩展的mapper接口方法
+    List<TechnologyRequirementVO> find(TechnologyRequirement technologyRequirement);
 }

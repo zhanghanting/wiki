@@ -16,4 +16,8 @@ public interface CustomService {
     TypeCode insertCustom(Custom custom);
 
     TypeCode deleteCustomsByIds(String[] ids);
+
+    MyPageHelper<Custom> searchCustomByCustomId(String searchValue, Integer page, Integer rows);
+
+    MyPageHelper<Custom> searchCustomByCustomName(String searchValue, Integer page, Integer rows);
 }

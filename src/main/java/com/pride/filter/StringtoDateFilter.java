@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateFileFilter implements Converter<String,Date> {
+public class StringtoDateFilter implements Converter<String,Date> {
 
     @Override
     public Date convert(String s) {

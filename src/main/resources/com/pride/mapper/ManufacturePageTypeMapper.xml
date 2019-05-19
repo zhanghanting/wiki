@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pride.mapper.ManufacturePageTypeMapper">
+
+
+  <resultMap id="BaseResultMap" type="com.pride.domain.Manufacture">
+    <id column="manufacture_sn" jdbcType="VARCHAR" property="manufactureSn" />
+    <result column="m_orderid" jdbcType="VARCHAR" property="orderId" />
+    <result column="technology_id" jdbcType="VARCHAR" property="technologyId" />
+    <result column="launch_quantity" jdbcType="INTEGER" property="launchQuantity" />
+    <result column="begin_date" jdbcType="TIMESTAMP" property="beginDate" />
+    <result column="end_date" jdbcType="TIMESTAMP" property="endDate" />
+  </resultMap>
+
+  <resultMap id="searchManufacture" type="com.pride.domain.manufacture.ManufacturePageType" extends="BaseResultMap">
+    <association property="technology" column="technology_id" >
+    <id column="m_technology_id" jdbcType="VARCHAR" property="technologyId" />
+    <result column="technology_name" jdbcType="VARCHAR" property="technologyName" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="vital_process_period" jdbcType="VARCHAR" property="vitalProcessPeriod" />
+    <result column="standard_capacity" jdbcType="INTEGER" property="standardCapacity" />
+    <result column="overtime_standard_capacity" jdbcType="INTEGER" property="overtimeStandardCapacity" />
+    <result column="overtime_overfulfil_capacity" jdbcType="INTEGER" property="overtimeOverfulfilCapacity" />
+    <result column="double_capacity" jdbcType="INTEGER" property="doubleCapacity" />
+    <result column="overfulfil_capacity" jdbcType="INTEGER" property="overfulfilCapacity" />
+    </association>
+    <association property="cOrder" column="order_id">
+      <id column="c_orderid" jdbcType="VARCHAR" property="orderId" />
+      <result column="custom_id" jdbcType="VARCHAR" property="customId" />
+      <result column="product_id" jdbcType="VARCHAR" property="productId" />
+      <result column="order_date" jdbcType="TIMESTAMP" property="orderDate" />
+      <result column="request_date" jdbcType="TIMESTAMP" property="requestDate" />
+      <result column="note" jdbcType="VARCHAR" property="note" />
+      <result column="quantity" jdbcType="INTEGER" property="quantity" />
+      <result column="unit_price" jdbcType="DECIMAL" property="unitPrice" />
+      <result column="unit" jdbcType="VARCHAR" property="unit" />
+      <result column="image" jdbcType="VARCHAR" property="image" />
+      <result column="file" jdbcType="VARCHAR" property="file" />
+      <result column="status" jdbcType="INTEGER" property="status" />
+    </association>
+  </resultMap>
+
+  <sql id="selectSearchCorder">
+    co.order_id as c_orderid,co.custom_id,co.product_id,co.order_date,co.request_date,co.note,co.quantity,co.unit_price,co.unit,co.image,co.file,co.status
+  </sql>
+  <sql id="selectSearchManufacture">
+    m.manufacture_sn, m.order_id as m_orderid, m.technology_id as m_technology_id, m.launch_quantity, m.begin_date, m.end_date
+  </sql>
+  <sql id="selectSearchTechnology">
+    t.technology_id as t_technology_id, t.technology_name, t.price, t.vital_process_period, t.standard_capacity, t.overtime_standard_capacity,
+    t.overtime_overfulfil_capacity, t.double_capacity, t.overfulfil_capacity
+  </sql>
+  <select id="searchManufactureByManufactureOrderId" resultMap="searchManufacture">
+    select <include refid="selectSearchManufacture"/> , <include refid="selectSearchTechnology"/>  , <include refid="selectSearchManufacture"/>
+    from c_order co left join manufacture m on co.order_id = m.order_id
+    left join technology t on m.technology_id = t.technology_id
+    where co.order_id like ${searchValue}
+  </select>
+
+
+</mapper>

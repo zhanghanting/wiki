@@ -27,4 +27,6 @@ public interface DeviceCheckMapper {
     int updateByPrimaryKeySelective(DeviceCheck record);
 
     int updateByPrimaryKey(DeviceCheck record);
+
+    List<DeviceCheck> queryAllDeviceCheck();
 }

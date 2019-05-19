@@ -306,4 +306,9 @@
       note = #{note,jdbcType=VARCHAR}
     where device_id = #{deviceId,jdbcType=VARCHAR}
   </update>
+  <select id="queryAllDevice" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from device
+  </select>
 </mapper>

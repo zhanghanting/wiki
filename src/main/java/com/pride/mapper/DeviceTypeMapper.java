@@ -27,4 +27,6 @@ public interface DeviceTypeMapper {
     int updateByPrimaryKeySelective(DeviceType record);
 
     int updateByPrimaryKey(DeviceType record);
+
+    List<DeviceType> queryAllDeviceType();
 }

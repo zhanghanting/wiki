@@ -1,7 +1,7 @@
 package com.pride.controller.technology;
 
 import com.pride.domain.Technology;
-import com.pride.service.TechnologyService;
+import com.pride.service.technology.TechnologyService;
 import com.pride.utils.JsonUtil;
 import com.pride.utils.MyPageHelper;
 import org.springframework.beans.factory.annotation.Autowired;

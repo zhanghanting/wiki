@@ -1,4 +1,4 @@
-package com.pride.service;
+package com.pride.service.technology;
 
 import com.pride.domain.Technology;
 

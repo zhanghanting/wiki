@@ -1,4 +1,4 @@
-package com.pride.service.impl;
+package com.pride.service.technology;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -6,7 +6,7 @@ import com.pride.domain.Technology;
 import com.pride.domain.TechnologyExample;
 
 import com.pride.mapper.TechnologyMapper;
-import com.pride.service.TechnologyService;
+import com.pride.service.technology.TechnologyService;
 import com.pride.utils.JsonUtil;
 import com.pride.utils.MyPageHelper;
 import org.springframework.beans.factory.annotation.Autowired;

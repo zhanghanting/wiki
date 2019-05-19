@@ -60,16 +60,13 @@ public class FirstController
         sysPermissionList.add("technologyRequirement:add");
         sysPermissionList.add("technologyRequirement:edit");
         sysPermissionList.add("technologyRequirement:delete");
-<<<<<<< HEAD
+
         sysPermissionList.add("technologyPlan:add");
         sysPermissionList.add("technologyPlan:edit");
         sysPermissionList.add("technologyPlan:delete");
         sysPermissionList.add("process:add");
         sysPermissionList.add("process:edit");
         sysPermissionList.add("process:delete");
-
-=======
->>>>>>> a28bc006b25812a4765c5ed9a0d4b33339a483a8
 
         session.setAttribute("sysPermissionList",sysPermissionList);
         return "home";

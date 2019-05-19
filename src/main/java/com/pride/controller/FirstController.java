@@ -49,6 +49,9 @@ public class FirstController
         sysPermissionList.add("technology:add");
         sysPermissionList.add("technology:edit");
         sysPermissionList.add("technology:delete");
+        sysPermissionList.add("technologyRequirement:add");
+        sysPermissionList.add("technologyRequirement:edit");
+        sysPermissionList.add("technologyRequirement:delete");
         session.setAttribute("sysPermissionList",sysPermissionList);
         return "home";
     }

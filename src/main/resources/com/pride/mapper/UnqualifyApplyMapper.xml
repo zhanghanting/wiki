@@ -38,6 +38,63 @@
 		AND unqualify_apply.emp_id = employee.emp_id
 		ORDER BY unqualify_apply.apply_date
 	</select>
+  <!--批量删除-->
+  <delete id="deleteBatch">
+    delete
+    from
+      unqualify_apply
+    where
+      unqualify_apply_id IN
+      <foreach collection="array" item="id" close=")" open="(" separator=",">
+        #{id}
+      </foreach>
+  </delete>
+  <!--根据UnqualifyId模糊查询-->
+  <select id="searchUnqualifyByUnqualifyId" parameterType="string" resultMap="AddResultMap">
+		SELECT
+			unqualify_apply_id,
+			unqualify_apply.product_id,
+			unqualify_item,
+			product_name,
+			unqualify_count,
+			assembly_date,
+			unqualify_apply.emp_id,
+			apply_date,
+			unqualify_apply.note
+		FROM
+			unqualify_apply,
+			employee,
+			product
+		WHERE
+			unqualify_apply.product_id = product.product_id
+		AND unqualify_apply.emp_id = employee.emp_id
+		AND unqualify_apply_id LIKE CONCAT(
+				'%',
+				#{unqualifyApplyId},'%' )
+	</select>
+  <!--根据productName模糊查询-->
+  <select id="searchUnqualifyByProductName" parameterType="string" resultMap="AddResultMap">
+		SELECT
+			unqualify_apply_id,
+			unqualify_apply.product_id,
+			unqualify_item,
+			product_name,
+			unqualify_count,
+			assembly_date,
+			unqualify_apply.emp_id,
+			apply_date,
+			unqualify_apply.note
+		FROM
+			unqualify_apply,
+			employee,
+			product
+		where
+			unqualify_apply.product_id = product.product_id
+		AND unqualify_apply.emp_id = employee.emp_id
+		AND product_name LIKE CONCAT(
+				'%',
+				#{productName},'%' )
+	</select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

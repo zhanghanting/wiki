@@ -1,12 +1,16 @@
 package com.pride.domain;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class TechnologyPlan {
+    @Size(max=40, message="{id.length.error}")
     private String technologyPlanId;
 
     private String technologyId;
 
+    @Max(value=999999999, message="批次数量不能超过999999999")
     private Integer batchAmount;
 
     private Date startPlan;

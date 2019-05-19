@@ -15,4 +15,7 @@ public interface TaskService {
     TypeCode deleteTasksByIds(String[] ids);
 
     TypeCode insertProduct(Task task);
+
+    MyPageHelper<Task> searchTask(String taskId,String taskWorkId,String taskManufactureSn,Integer page, Integer rows);
+
 }

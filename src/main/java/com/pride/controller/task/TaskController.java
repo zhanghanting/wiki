@@ -35,7 +35,24 @@ public class TaskController {
     public List<Task> getData(){
         return taskService.viewAllTasks();
     }
-
+    // 通过生产派工编号模糊查询
+    @ResponseBody
+    @RequestMapping("search_task_by_taskId")
+    public MyPageHelper<Task> searchTaskByTaskId(String searchValue,Integer page, Integer rows){
+        return taskService.searchTask(searchValue,null,null,page,rows);
+    }
+    // 通过作业编号模糊查询
+    @ResponseBody
+    @RequestMapping("search_task_by_taskWorkId")
+    public MyPageHelper<Task> searchTaskByTaskWorkId(String searchValue,Integer page, Integer rows){
+        return taskService.searchTask(null,searchValue,null,page,rows);
+    }
+    // 通过作业编号模糊查询
+    @ResponseBody
+    @RequestMapping("search_task_by_taskManufactureSn")
+    public MyPageHelper<Task> searchTaskByTaskManufactureSn(String searchValue,Integer page, Integer rows){
+        return taskService.searchTask(null,null,searchValue,page,rows);
+    }
 
 
     // 返回空的json

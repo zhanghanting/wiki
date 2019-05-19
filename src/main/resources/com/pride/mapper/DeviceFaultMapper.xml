@@ -85,6 +85,11 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="queryAllDeviceFault" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from device_fault
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

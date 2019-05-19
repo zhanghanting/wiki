@@ -27,4 +27,6 @@ public interface DeviceFaultMapper {
     int updateByPrimaryKeySelective(DeviceFault record);
 
     int updateByPrimaryKey(DeviceFault record);
+
+    List<DeviceFault> queryAllDeviceFault();
 }

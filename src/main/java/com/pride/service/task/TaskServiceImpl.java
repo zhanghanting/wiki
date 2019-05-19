@@ -74,4 +74,26 @@ public class TaskServiceImpl implements TaskService{
         }
         return typeCode;
     }
+
+    @Override
+    public MyPageHelper<Task> searchTask(String taskId,String taskWorkId,String taskManufactureSn,Integer page, Integer rows) {
+        TaskExample taskExample = new TaskExample();
+        TaskExample.Criteria criteria = taskExample.createCriteria();
+        if(taskId != null) {
+            criteria.andTaskIdLike("%" + taskId + "%");
+        }
+        if(taskWorkId != null) {
+            criteria.andWorkIdLike("%" + taskWorkId + "%");
+        }
+        if(taskManufactureSn != null) {
+            criteria.andManufactureSnLike("%" + taskManufactureSn + "%");
+        }
+        PageHelper.startPage(page,rows);
+        List<Task> tasks = taskMapper.selectByExample(taskExample);
+        PageInfo<Task> pageInfo = new PageInfo<>(tasks);
+        MyPageHelper<Task> pageHelper = new MyPageHelper<>();
+        pageHelper.setRows(tasks);
+        pageHelper.setTotal(pageInfo.getSize());
+        return pageHelper;
+    }
 }

@@ -20,8 +20,6 @@ public class CustomServiceImpl implements CustomService {
     CustomMapper customMapper;
 
     // 返回分页的Custom的List
-    // json
-    @ResponseBody
     @Override
     public MyPageHelper<Custom> viewPageCustoms(Integer page,Integer rows) {
         PageHelper.startPage(page,rows);
@@ -40,14 +38,11 @@ public class CustomServiceImpl implements CustomService {
     }
 
     // 返回所有Custom的List
-    // json
-    @ResponseBody
     @Override
     public List<Custom> viewAllCustoms() {
         return customMapper.selectByExample(new CustomExample());
     }
 
-    @ResponseBody
     @Override
     public TypeCode insertCustom(Custom custom) {
         TypeCode typeCode = new TypeCode("200","OK");
@@ -60,7 +55,6 @@ public class CustomServiceImpl implements CustomService {
     }
 
 
-    @ResponseBody
     @Override
     public TypeCode deleteCustomsByIds(String[] ids) {
         TypeCode typeCode = new TypeCode("200","OK");
@@ -72,5 +66,31 @@ public class CustomServiceImpl implements CustomService {
             typeCode.setMsg("ERROR");
         }
         return typeCode;
+    }
+
+    @Override
+    public MyPageHelper<Custom> searchCustomByCustomId(String searchValue, Integer page, Integer rows) {
+        CustomExample customExample = new CustomExample();
+        CustomExample.Criteria criteria = customExample.createCriteria();
+        criteria.andCustomIdLike("%" + searchValue + "%");
+        return viewSearch(customExample,page,rows);
+    }
+
+    @Override
+    public MyPageHelper<Custom> searchCustomByCustomName(String searchValue, Integer page, Integer rows) {
+        CustomExample customExample = new CustomExample();
+        CustomExample.Criteria criteria = customExample.createCriteria();
+        criteria.andCustomNameLike("%" + searchValue + "%");
+        return viewSearch(customExample,page,rows);
+    }
+
+    private MyPageHelper<Custom> viewSearch(CustomExample customExample,Integer page, Integer rows){
+        PageHelper.startPage(page,rows);
+        List<Custom> customs = customMapper.selectByExample(customExample);
+        PageInfo<Custom> pageInfo = new PageInfo<>(customs);
+        MyPageHelper<Custom> pageHelper = new MyPageHelper<>();
+        pageHelper.setRows(customs);
+        pageHelper.setTotal(pageInfo.getTotal());
+        return pageHelper;
     }
 }

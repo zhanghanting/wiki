@@ -8,6 +8,38 @@
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="revise_time" jdbcType="TIMESTAMP" property="reviseTime" />
   </resultMap>
+
+  <!--扩展的sql-->
+
+  <!--查询所有记录-->
+  <resultMap id="AddResultMap" type="com.pride.domain.vo.TechnologyRequirementVO" extends="BaseResultMap">
+    <result property="technologyName" column="technology_name"/>
+  </resultMap>
+
+  <select id="find" resultMap="AddResultMap">
+
+   SELECT
+		technology_requirement_id,
+		technology_requirement.technology_id,
+		technology_name,
+		requirement,
+		add_time,
+		revise_time
+	FROM
+		technology_requirement
+	LEFT JOIN technology ON technology.technology_id = technology_requirement.technology_id
+	ORDER BY
+		technology_requirement_id ASC
+
+  </select>
+
+  <!--根据工艺要求id进行查找-->
+
+
+  <!--根据工艺名称进行查找-->
+
+
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

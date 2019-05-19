@@ -31,4 +31,10 @@ public interface UnqualifyApplyMapper {
     int updateByPrimaryKey(UnqualifyApply record);
     //获取所有的不合格品管理信息
     List<UnqualifyApplyVO> find();
+    //批量删除
+    int deleteBatch(String[] ids);
+    //根据id模糊查询
+    List<UnqualifyApplyVO> searchUnqualifyByUnqualifyId(String id);
+    //根据productName模糊查询
+    List<UnqualifyApplyVO> searchUnqualifyByProductName(String ProductName);
 }

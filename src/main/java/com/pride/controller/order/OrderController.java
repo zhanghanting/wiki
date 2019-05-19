@@ -37,6 +37,31 @@ public class OrderController {
     public MyPageHelper<OrderPageType> list(Integer page, Integer rows) {
         return corderService.viewAllOrders(page,rows);
     }
+    //返回所有的Corder
+    @ResponseBody
+    @RequestMapping("get_data")
+    public List<Corder> getData(){
+        return corderService.viewAllCorders();
+    }
+    @ResponseBody
+    @RequestMapping("search_order_by_orderId")
+    public MyPageHelper<OrderPageType> searchOrderByOrderId(String searchValue,Integer page, Integer rows){
+        return corderService.searchOrderByOrderId(searchValue,page,rows);
+    }
+
+    @ResponseBody
+    @RequestMapping("search_order_by_orderCustom")
+    public MyPageHelper<OrderPageType> searchOrderByOrderorderCustom(String searchValue,Integer page, Integer rows){
+        return corderService.searchOrderByOrderorderCustomName(searchValue,page,rows);
+    }
+
+    @ResponseBody
+    @RequestMapping("search_order_by_orderProduct")
+    public MyPageHelper<OrderPageType> searchOrderByOrderProduct(String searchValue,Integer page, Integer rows){
+        return corderService.searchOrderByOrderProductName(searchValue,page,rows);
+    }
+
+
 
 
     // 跳转到order编辑页面

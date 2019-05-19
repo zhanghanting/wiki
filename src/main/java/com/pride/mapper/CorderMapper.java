@@ -34,4 +34,8 @@ public interface CorderMapper {
     int updateByPrimaryKeySelective(Corder record);
 
     int updateByPrimaryKey(Corder record);
+
+    List<OrderPageType> selectOrderPageTypeByCustomName(@Param("searchValue") String searchValue);
+
+    List<OrderPageType> selectOrderPageTypeByProductName(@Param("searchValue") String searchValue);
 }

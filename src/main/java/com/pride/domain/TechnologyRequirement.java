@@ -1,12 +1,15 @@
 package com.pride.domain;
 
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class TechnologyRequirement {
+    @Size(max=40, message="{id.length.error}")
     private String technologyRequirementId;
 
     private String technologyId;
 
+    @Size(max=2000, message="工艺要求的长度限制在2000个字符之内")
     private String requirement;
 
     private Date addTime;

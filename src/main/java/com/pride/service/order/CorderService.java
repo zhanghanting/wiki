@@ -17,4 +17,13 @@ public interface CorderService {
     TypeCode deleteCordersByIds(String[] ids);
 
     TypeCode insertOrder(Corder corder);
+
+    MyPageHelper<OrderPageType> searchOrderByOrderId(String searchValue, Integer page, Integer rows);
+
+    MyPageHelper<OrderPageType> searchOrderByOrderorderCustomName(String searchValue, Integer page, Integer rows);
+
+    MyPageHelper<OrderPageType> searchOrderByOrderProductName(String searchValue, Integer page, Integer rows);
+
+    List<Corder> viewAllCorders();
+
 }

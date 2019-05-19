@@ -30,6 +30,9 @@ public class FirstController
         sysPermissionList.add("technology:add");
         sysPermissionList.add("technology:edit");
         sysPermissionList.add("technology:delete");
+        sysPermissionList.add("device:add");
+        sysPermissionList.add("device:edit");
+        sysPermissionList.add("device:delete");
         session.setAttribute("sysPermissionList",sysPermissionList);
         return "home";
     }

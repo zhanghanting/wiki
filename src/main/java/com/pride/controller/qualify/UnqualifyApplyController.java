@@ -116,6 +116,18 @@ public class UnqualifyApplyController
             return unqualifyService.updateAll(unqualifyApply);
     }
     @ResponseBody
+    @RequestMapping(value = "/update_note")
+    private JsonUtil updateNote(@Valid UnqualifyApply unqualifyApply,BindingResult bindingResult)
+    {
+        if(bindingResult.hasErrors())
+        {
+            FieldError fieldError = bindingResult.getFieldError();
+            return JsonUtil.build(100,fieldError.getDefaultMessage());
+        }
+        else
+            return unqualifyService.updateNote(unqualifyApply);
+    }
+    @ResponseBody
     @RequestMapping(value = "/delete_batch")
     private JsonUtil deleteBatch(String[] ids)
     {

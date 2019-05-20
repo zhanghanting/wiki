@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -27,6 +29,22 @@ public class TechnologyController {
 
     @Autowired
     private TechnologyService technologyService;
+
+
+    @RequestMapping("/get/{technologyId}")
+    @ResponseBody
+    public Technology getItemById(@PathVariable("technologyId") String technologyId){
+        Technology technology = technologyService.get(technologyId);
+        return technology;
+    }
+
+
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Technology> getData(){
+        List<Technology> list = technologyService.find();
+        return list;
+    }
 
     //返回technology_list页面
     @RequestMapping("/find")
@@ -115,21 +133,6 @@ public class TechnologyController {
         return result;
     }
 
-
-    @RequestMapping("/get/{technologyId}")
-    @ResponseBody
-    public Technology getItemById(@PathVariable("technologyId") String technologyId){
-        Technology technology = technologyService.get(technologyId);
-        return technology;
-    }
-
-
-    @RequestMapping("/get_data")
-    @ResponseBody
-    public List<Technology> getData(){
-        List<Technology> list = technologyService.find();
-        return list;
-    }
 
     //根据工艺编号查找
     @RequestMapping("/search_technology_by_technologyId")

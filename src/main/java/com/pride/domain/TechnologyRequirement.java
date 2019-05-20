@@ -4,7 +4,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class TechnologyRequirement {
-    @Size(max=40, message="{id.length.error}")
+    @Size(min = 1, max = 10)
     private String technologyRequirementId;
 
     private String technologyId;

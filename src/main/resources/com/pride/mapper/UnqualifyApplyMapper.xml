@@ -15,7 +15,12 @@
     <result column="product_name" property="productName" jdbcType="VARCHAR" />
     <result column="emp_name" property="empName" jdbcType="VARCHAR" />
   </resultMap>
-
+  <!--更新note-->
+  <update id="updateNote">
+    update unqualify_apply
+    set note = #{note}
+    where unqualify_apply_id = #{unqualifyApplyId}
+  </update>
   <!-- 查询所有记录 -->
   <select id="find" resultMap="AddResultMap">
 		SELECT

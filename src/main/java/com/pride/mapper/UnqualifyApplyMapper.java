@@ -37,4 +37,6 @@ public interface UnqualifyApplyMapper {
     List<UnqualifyApplyVO> searchUnqualifyByUnqualifyId(String id);
     //根据productName模糊查询
     List<UnqualifyApplyVO> searchUnqualifyByProductName(String ProductName);
+    //更新对应不合格品信息的note
+    int updateNote(UnqualifyApply unqualifyApply);
 }

@@ -4,15 +4,16 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
 
 public class Process {
-    @Size(max = 40, message = "{id.length.error}")
+
+    @Size(min = 1, max = 10)
     private String processId;
 
     private String technologyPlanId;
 
-    @Max(value=999999999, message="工序顺序不能超过999999999")
+    @Max(value=88888888, message="工序顺序不能超过88888888")
     private Integer sequence;
 
-    @Max(value=999999999, message="单件定额工时不能超过999999999")
+    @Max(value=88888888, message="单件定额工时不能超过88888888")
     private Integer quota;
 
     public String getProcessId() {

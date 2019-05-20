@@ -5,12 +5,12 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class TechnologyPlan {
-    @Size(max=40, message="{id.length.error}")
+    @Size(min = 1, max = 10)
     private String technologyPlanId;
 
     private String technologyId;
 
-    @Max(value=999999999, message="批次数量不能超过999999999")
+    @Max(value=88888888, message="批次数量不能超过88888888")
     private Integer batchAmount;
 
     private Date startPlan;

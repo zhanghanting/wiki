@@ -31,6 +31,21 @@ public class TechnologyRequirementController {
     @Autowired
     private TechnologyRequirementService technologyRequirementService;
 
+    @RequestMapping("/get/{technologyRequirementId}")
+    @ResponseBody
+    public TechnologyRequirement getItemById(@PathVariable String technologyRequirementId)
+            throws Exception{
+        TechnologyRequirement technologyRequirement = technologyRequirementService.get(technologyRequirementId);
+        return technologyRequirement;
+    }
+
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Technology> getData() throws Exception{
+        List<Technology> list = technologyRequirementService.find();
+        return list;
+    }
+
     //返回technologyRequirement_list页面
     @RequestMapping("/find")
     public String find(){
@@ -77,20 +92,6 @@ public class TechnologyRequirementController {
         return result;
     }
 
-    @RequestMapping("/get/{technologyRequirementId}")
-    @ResponseBody
-    public TechnologyRequirement getItemById(@PathVariable String technologyRequirementId)
-            throws Exception{
-        TechnologyRequirement technologyRequirement = technologyRequirementService.get(technologyRequirementId);
-        return technologyRequirement;
-    }
-
-    @RequestMapping("/get_data")
-    @ResponseBody
-    public List<Technology> getData() throws Exception{
-        List<Technology> list = technologyRequirementService.find();
-        return list;
-    }
 
     //返回空的json
     @RequestMapping("/edit_judge")

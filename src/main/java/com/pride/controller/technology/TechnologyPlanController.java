@@ -100,8 +100,6 @@ public class TechnologyPlanController {
         return "technologyPlan_edit";
     }
 
-
-
     //更新数据
     @RequestMapping(value="/update_all")
     @ResponseBody

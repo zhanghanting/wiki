@@ -1,5 +1,6 @@
 package com.pride.domain.material;
 
+
 import com.pride.domain.Material;
 
 import java.util.Date;

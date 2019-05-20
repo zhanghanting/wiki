@@ -39,4 +39,14 @@
           class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
     </bean>
+
+    <!-- 转换器 -->
+    <bean id="conversionService"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.pride.controller.conventer.DateConverter"/>
+            </set>
+        </property>
+    </bean>
 </beans>

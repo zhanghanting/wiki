@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -146,4 +148,9 @@ public class TechnologyController {
         MyPageHelper result = technologyService.searchTechnologyByTechnologyName(page, rows, searchValue);
         return result;
     }
+
+
+
+
+
 }

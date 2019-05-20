@@ -159,6 +159,13 @@
             <version>2.2.2</version>
         </dependency>
 
+        <!-- hibernate validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.3.5.Final</version>
+        </dependency>
+
         <!-- 其他 -->
         <dependency>
             <groupId>org.aspectj</groupId>

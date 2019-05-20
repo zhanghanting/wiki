@@ -2,7 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pride.mapper.CorderMapper">
   
-  <resultMap id="viewAll" type="com.pride.domain.order.OrderPageType">
+  <resultMap id="viewAll" type="com.pride.domain.order.OrderPageType" extends="BaseResultMap">
+    <association property="custom" column="custom_id" select="com.pride.mapper.CustomMapper.selectByPrimaryKey"/>
+    <association property="product" column="product_id" select="com.pride.mapper.ProductMapper.selectByPrimaryKey"/>
+  </resultMap>
+
+  <select id="viewAllOrders" resultMap="viewAll">
+    select <include refid="Base_Column_List"/> from c_order
+  </select>
+
+  <resultMap id="selectOrder" type="com.pride.domain.order.OrderPageType">
     <id column="order_id" jdbcType="VARCHAR" property="orderId" />
     <result column="custom_id" jdbcType="VARCHAR" property="customId" />
     <result column="product_id" jdbcType="VARCHAR" property="productId" />
@@ -15,17 +24,50 @@
     <result column="image" jdbcType="VARCHAR" property="image" />
     <result column="file" jdbcType="VARCHAR" property="file" />
     <result column="status" jdbcType="INTEGER" property="status" />
-    <association property="custom" column="custom_id" select="com.pride.mapper.CustomMapper.selectByPrimaryKey"/>
-    <association property="product" column="product_id" select="com.pride.mapper.ProductMapper.selectByPrimaryKey"/>
+    <association property="custom" column="co.custom_id">
+      <id column="custom_id" jdbcType="VARCHAR" property="customId" />
+      <result column="custom_name" jdbcType="VARCHAR" property="customName" />
+      <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+      <result column="address" jdbcType="VARCHAR" property="address" />
+      <result column="fax" jdbcType="VARCHAR" property="fax" />
+      <result column="email" jdbcType="VARCHAR" property="email" />
+      <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
+      <result column="owner_tel" jdbcType="VARCHAR" property="ownerTel" />
+      <result column="status" jdbcType="INTEGER" property="status" />
+      <result column="note" jdbcType="VARCHAR" property="note" />
+    </association>
+    <association property="product" column="product_id" >
+      <id column="product_id" jdbcType="VARCHAR" property="productId" />
+      <result column="product_name" jdbcType="VARCHAR" property="productName" />
+      <result column="product_type" jdbcType="VARCHAR" property="productType" />
+      <result column="image" jdbcType="VARCHAR" property="image" />
+      <result column="note" jdbcType="VARCHAR" property="note" />
+      <result column="status" jdbcType="INTEGER" property="status" />
+    </association>
   </resultMap>
 
-  <select id="viewAllOrders" resultMap="viewAll">
-    select <include refid="Base_Column_List"/> from c_order
+  <sql id="selectSearchCorder">
+    co.order_id,co.custom_id,co.product_id,co.order_date,co.request_date,co.note,co.quantity,co.unit_price,co.unit,co.image,co.file,co.status
+  </sql>
+  <sql id="selectSearchCustom">
+    cu.custom_name,cu.full_name,cu.address,cu.fax,cu.email,cu.owner_name,cu.owner_tel,cu.status,cu.note
+  </sql>
+  <sql id="selectSearchProduct">
+    p.product_name,p.product_type,p.image,p.note,p.status
+  </sql>
+  <select id="selectOrderPageTypeByCustomName" resultMap="selectOrder">
+          select <include refid="selectSearchCorder"/> , <include refid="selectSearchCustom" /> ,
+          <include refid="selectSearchProduct"/> from custom cu LEFT JOIN c_order co
+          on cu.custom_id = co.custom_id LEFT JOIN product p
+          on co.product_id = p.product_id where cu.custom_name like ${searchValue}
   </select>
-  
-  
-  
 
+  <select id="selectOrderPageTypeByProductName" resultMap="selectOrder">
+    select <include refid="selectSearchCorder"/> , <include refid="selectSearchCustom" /> ,
+    <include refid="selectSearchProduct"/> from  product p  LEFT JOIN c_order co
+    on co.product_id = p.product_id   LEFT JOIN  custom cu
+    on cu.custom_id = co.custom_id where p.product_name like ${searchValue}
+  </select>
 
   <resultMap id="BaseResultMap" type="com.pride.domain.Corder">
     <id column="order_id" jdbcType="VARCHAR" property="orderId" />

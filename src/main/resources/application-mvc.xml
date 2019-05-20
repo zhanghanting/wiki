@@ -20,7 +20,7 @@
     <bean id="format" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <set>
-                <bean class="com.pride.filter.DateFileFilter"/>
+                <bean class="com.pride.filter.StringtoDateFilter"/>
             </set>
         </property>
     </bean>

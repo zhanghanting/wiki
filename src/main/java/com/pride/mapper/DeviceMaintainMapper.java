@@ -27,4 +27,6 @@ public interface DeviceMaintainMapper {
     int updateByPrimaryKeySelective(DeviceMaintain record);
 
     int updateByPrimaryKey(DeviceMaintain record);
+
+    List<DeviceMaintain> queryAllDeviceMaintain();
 }

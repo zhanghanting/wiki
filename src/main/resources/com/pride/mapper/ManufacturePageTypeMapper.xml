@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pride.mapper.ManufacturePageTypeMapper">
+
+
+  <resultMap id="BaseResultMap" type="com.pride.domain.Manufacture">
+    <id column="manufacture_sn" jdbcType="VARCHAR" property="manufactureSn" />
+    <result column="m_orderid" jdbcType="VARCHAR" property="orderId" />
+    <result column="m_technology_id" jdbcType="VARCHAR" property="technologyId" />
+    <result column="launch_quantity" jdbcType="INTEGER" property="launchQuantity" />
+    <result column="begin_date" jdbcType="TIMESTAMP" property="beginDate" />
+    <result column="end_date" jdbcType="TIMESTAMP" property="endDate" />
+  </resultMap>
+
+ <!-- <resultMap id="searchManufacture" type="com.pride.domain.manufacture.ManufacturePageType" extends="BaseResultMap">
+    <association property="technology" javaType="com.pride.domain.Technology" />
+    <association property="cOrder" javaType="com.pride.domain.order"/>
+  </resultMap>-->
+
+  <sql id="selectSearchCorder">
+    co.order_id,co.custom_id,co.product_id,co.order_date,co.request_date,co.note,co.quantity,co.unit_price,co.unit,co.image,co.file,co.status
+  </sql>
+  <sql id="selectSearchManufacture">
+    m.manufacture_sn, m.order_id as m_orderid, m.technology_id as m_technology_id, m.launch_quantity, m.begin_date, m.end_date
+  </sql>
+  <sql id="selectSearchTechnology">
+    t.technology_id , t.technology_name, t.price, t.vital_process_period, t.standard_capacity, t.overtime_standard_capacity,
+    t.overtime_overfulfil_capacity, t.double_capacity, t.overfulfil_capacity
+  </sql>
+ <!-- <select id="searchManufactureByManufactureTechnologyName" resultMap="searchManufacture">
+    select  <include refid="selectSearchTechnology"/> , <include refid="selectSearchManufacture"/> , <include refid="selectSearchManufacture"/>
+    from  manufacture m  inner join technology t on m.technology_id  = t.technology_id
+    left join c_order co on m.order_id = co.order_id
+    where t.technology_name like ${searchValue}
+  </select>-->
+
+</mapper>

@@ -33,9 +33,9 @@ public class FCountCheckController
         List<FinalCountCheckVO> finalCountCheckVOS = finalCountCheckService.queryFinalCountCheckVO();
         //将获取的信息封装为page
         PageInfo<FinalCountCheckVO> finalCountCheckVOPageInfo = new PageInfo<>(finalCountCheckVOS);
-        MyPageHelper myPageHelper = new MyPageHelper();
-        myPageHelper.setRows(finalCountCheckVOS);
-        myPageHelper.setTotal(finalCountCheckVOPageInfo.getTotal());
-        return myPageHelper;
+        MyPageHelper MyPageHelper = new MyPageHelper();
+        MyPageHelper.setRows(finalCountCheckVOS);
+        MyPageHelper.setTotal(finalCountCheckVOPageInfo.getTotal());
+        return MyPageHelper;
     }
 }

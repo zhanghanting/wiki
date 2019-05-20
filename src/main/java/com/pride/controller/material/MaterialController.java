@@ -118,8 +118,8 @@ public class MaterialController {
         PageHelper.startPage(page, rows);
         List<Material> materialList = materialService.queryMaterialList();
         PageInfo<Material> materialPageInfo = new PageInfo(materialList);
-        MyPageHelper myPageHelper = new MyPageHelper();
-        myPageHelper.setRows(materialList);
-        myPageHelper.setTotal(materialPageInfo.getTotal());
-        return myPageHelper;
+        MyPageHelper MyPageHelper = new MyPageHelper();
+        MyPageHelper.setRows(materialList);
+        MyPageHelper.setTotal(materialPageInfo.getTotal());
+        return MyPageHelper;
     }*/

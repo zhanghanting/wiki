@@ -3,6 +3,8 @@ package com.pride.mapper;
 import com.pride.domain.Process;
 import com.pride.domain.ProcessExample;
 import java.util.List;
+
+import com.pride.domain.Product;
 import org.apache.ibatis.annotations.Param;
 
 public interface ProcessMapper {
@@ -27,4 +29,12 @@ public interface ProcessMapper {
     int updateByPrimaryKeySelective(Process record);
 
     int updateByPrimaryKey(Process record);
+
+
+    //扩展的mapper接口方法
+    int deleteBatch(String[] ids);
+
+    List<Process> searchProcessByProcessId(String processId);
+
+    List<Process> searchProcessByTechnologyPlanId(String technologyPlanId);
 }

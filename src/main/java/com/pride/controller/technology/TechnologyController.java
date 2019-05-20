@@ -78,7 +78,7 @@ public class TechnologyController {
     //返回空的json
     @RequestMapping("/edit_judge")
     @ResponseBody
-    public String editJudege(){
+    public String editJudge(){
         return null;
     }
 

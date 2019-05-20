@@ -92,4 +92,14 @@ public class UnqualifyServiceImpl implements UnqualifyService
         myPageHelper.setTotal(unqualifyApplyVOPageInfo.getTotal());
         return myPageHelper;
     }
+
+    @Override
+    public JsonUtil updateNote(UnqualifyApply unqualifyApply)
+    {
+        int update = unqualifyApplyMapper.updateNote(unqualifyApply);
+        if(update > 0)
+            return JsonUtil.ok();
+        else
+            return JsonUtil.build(101,"修改当前不合格品信息失败");
+    }
 }

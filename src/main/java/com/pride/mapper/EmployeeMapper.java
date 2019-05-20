@@ -3,6 +3,8 @@ package com.pride.mapper;
 import com.pride.domain.Employee;
 import com.pride.domain.EmployeeExample;
 import java.util.List;
+
+import com.pride.domain.vo.EmployeeVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface EmployeeMapper {
@@ -27,4 +29,7 @@ public interface EmployeeMapper {
     int updateByPrimaryKeySelective(Employee record);
 
     int updateByPrimaryKey(Employee record);
+
+    EmployeeVO selectEmployeeVO(String emId);
+    List<EmployeeVO> find();
 }

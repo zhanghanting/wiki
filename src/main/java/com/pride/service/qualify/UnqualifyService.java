@@ -18,5 +18,7 @@ public interface UnqualifyService
     JsonUtil deleteBatch(String[] ids);
     MyPageHelper searchUnqualifyByUnqualifyId(int page,int rows,String id);
     MyPageHelper serarchUnqualifyByProductName(int page,int rows,String ProductName);
+
+    JsonUtil updateNote(UnqualifyApply unqualifyApply);
 }
 

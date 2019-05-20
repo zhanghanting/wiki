@@ -30,4 +30,12 @@ public interface FinalCountCheckMapper {
 
     int updateByPrimaryKey(FinalCountCheck record);
     List<FinalCountCheckVO> find();
+
+    int deleteBatch(String[] ids);
+
+    List<FinalCountCheckVO> searchFCountCheckByOrderId(String searchValue);
+
+    int updateNote(FinalCountCheck finalCountCheck);
+
+    List<FinalCountCheckVO> searchFCountCheckByFCountCheckId(String searchValue);
 }

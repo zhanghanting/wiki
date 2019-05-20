@@ -41,7 +41,48 @@
 		WHERE
 			process_count_check.emp_id = employee.emp_id
 	</select>
+  <!-- 修改备注-->
+  <update id="updateNote" >
+		UPDATE process_count_check
+		SET note = #{note}
+		WHERE
+			p_count_check_id = #{pCountCheckId,jdbcType=VARCHAR}
+	</update>
 
+  <select id="searchpCountCheckBypCountCheckId" resultMap="AddResultMap">
+		SELECT
+			p_count_check_id,
+			process_id,
+			check_item,
+			sample,
+			check_number,
+			unqualify,
+			qualify,
+			cdate,
+			measure_data,
+			process_count_check.emp_id,
+			emp_name,
+			result,
+			note
+		FROM
+			process_count_check,
+			employee
+		WHERE
+			process_count_check.emp_id = employee.emp_id
+		AND	p_count_check_id like CONCAT('%',#{pCountCheckId},'%' )
+	</select>
+
+  <!-- 批量删除 -->
+  <delete id="deleteBatch">
+    DELETE
+    FROM
+    process_count_check
+    WHERE
+    p_count_check_id IN
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

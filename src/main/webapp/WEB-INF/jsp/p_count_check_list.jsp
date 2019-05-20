@@ -415,8 +415,7 @@ function submitEmpEditForm_pCount(){
     	
     	return ids;
     }
-    
-//////////////////////////////////////////////////////////////////////////
+
     function pCountCheck_add(){
     	$.get("pCountCheck/add_judge",'',function(data){
        		if(data.msg != null){

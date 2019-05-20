@@ -30,4 +30,12 @@ public interface FinalMeasuretCheckMapper {
 
     int updateByPrimaryKey(FinalMeasuretCheck record);
     List<FinalMeasureCheckVO> find();
+
+    int deleteBatch(String[] ids);
+
+    List<FinalMeasureCheckVO> searchFMeasureCheckByfMeasureCheckId(String searchValue);
+
+    List<FinalMeasureCheckVO> searchFMeasureCheckByOrderId(String searchValue);
+
+    int updateNote(FinalMeasuretCheck finalMeasuretCheck);
 }

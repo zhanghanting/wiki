@@ -11,4 +11,8 @@ public interface DeviceTypeService {
     TypeCode insertDeviceType(DeviceType deviceType);
 
     TypeCode deleteDeviceTypeByIds(String[] ids);
+
+    TypeCode updateDeviceTypeById(DeviceType deviceType);
+
+    DeviceType getDeviceTypeByPrimaryKey(String deviceTypeId);
 }

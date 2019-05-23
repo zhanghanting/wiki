@@ -2,6 +2,7 @@ package com.pride.mapper;
 
 import com.pride.domain.Device;
 import com.pride.domain.DeviceExample;
+import com.pride.domain.vo.DeviceVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -29,5 +30,5 @@ public interface DeviceMapper {
 
     int updateByPrimaryKey(Device record);
 
-    List<Device> queryAllDevice();
+    List<DeviceVO> queryAllDevice();
 }

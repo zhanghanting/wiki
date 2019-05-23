@@ -45,4 +45,23 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
         }
         return typeCode;
     }
+
+    @Override
+    public TypeCode updateDeviceTypeById(DeviceType deviceType) {
+        TypeCode typeCode = new TypeCode("200","OK");
+        try {
+            deviceTypeMapper.updateByPrimaryKey(deviceType);
+        }catch (Exception e){
+            typeCode.setMsg("ERROR");
+        }
+        return typeCode;
+    }
+
+    @Override
+    public DeviceType getDeviceTypeByPrimaryKey(String deviceTypeId) {
+        DeviceType deviceType = deviceTypeMapper.selectByPrimaryKey(deviceTypeId);
+        return deviceType;
+    }
+
+
 }

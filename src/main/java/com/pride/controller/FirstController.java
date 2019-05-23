@@ -46,12 +46,22 @@ public class FirstController
         sysPermissionList.add("unqualify:edit");
         sysPermissionList.add("unqualify:delete");
 
+        //设备管理
         sysPermissionList.add("device:add");
         sysPermissionList.add("device:edit");
         sysPermissionList.add("device:delete");
         sysPermissionList.add("deviceType:add");
         sysPermissionList.add("deviceType:edit");
         sysPermissionList.add("deviceType:delete");
+        sysPermissionList.add("deviceCheck:add");
+        sysPermissionList.add("deviceCheck:edit");
+        sysPermissionList.add("deviceCheck:delete");
+        sysPermissionList.add("deviceFault:add");
+        sysPermissionList.add("deviceFault:edit");
+        sysPermissionList.add("deviceFault:delete");
+        sysPermissionList.add("deviceMaintain:add");
+        sysPermissionList.add("deviceMaintain:edit");
+        sysPermissionList.add("deviceMaintain:delete");
 
         //工艺监控-工艺管理
         sysPermissionList.add("technology:add");

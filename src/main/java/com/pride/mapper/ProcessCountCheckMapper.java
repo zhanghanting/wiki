@@ -30,4 +30,10 @@ public interface ProcessCountCheckMapper {
 
     int updateByPrimaryKey(ProcessCountCheck record);
     List<ProcessCountCheckVO> find();
+
+    int deleteBatch(String[] ids);
+
+    List<ProcessCountCheckVO> searchpCountCheckBypCountCheckId(String searchValue);
+
+    int updateNote(ProcessCountCheck processCountCheck);
 }

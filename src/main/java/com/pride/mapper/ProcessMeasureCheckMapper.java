@@ -30,4 +30,10 @@ public interface ProcessMeasureCheckMapper {
 
     int updateByPrimaryKey(ProcessMeasureCheck record);
     List<ProcessMeasureCheckVO> find();
+
+    int deleteBatch(String[] ids);
+
+    List<ProcessMeasureCheckVO> searchPMeasureCheckByPMeasureCheckId(String searchValue);
+
+    int updateNote(ProcessMeasureCheck processMeasureCheck);
 }

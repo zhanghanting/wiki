@@ -41,10 +41,37 @@ public class FirstController
         sysPermissionList.add("product:add");
         sysPermissionList.add("product:edit");
         sysPermissionList.add("product:delete");
+        /**
+         * the next five module`s author:Zhanghanting
+         */
 
+        //不合格品管理
         sysPermissionList.add("unqualify:add");
         sysPermissionList.add("unqualify:edit");
         sysPermissionList.add("unqualify:delete");
+
+
+
+        //成品计量检测
+        sysPermissionList.add("fMeasureCheck:add");
+        sysPermissionList.add("fMeasureCheck:edit");
+        sysPermissionList.add("fMeasureCheck:delete");
+
+        //成品计数检测
+        sysPermissionList.add("fCountCheck:add");
+        sysPermissionList.add("fCountCheck:edit");
+        sysPermissionList.add("fCountCheck:delete");
+
+        //工序计量检测
+        sysPermissionList.add("pMeasureCheck:add");
+        sysPermissionList.add("pMeasureCheck:edit");
+        sysPermissionList.add("pMeasureCheck:delete");
+
+        //工序计数检测
+        sysPermissionList.add("pCountCheck:add");
+        sysPermissionList.add("pCountCheck:edit");
+        sysPermissionList.add("pCountCheck:delete");
+
 
         //设备管理
         sysPermissionList.add("device:add");
@@ -53,6 +80,7 @@ public class FirstController
         sysPermissionList.add("deviceType:add");
         sysPermissionList.add("deviceType:edit");
         sysPermissionList.add("deviceType:delete");
+
         sysPermissionList.add("deviceCheck:add");
         sysPermissionList.add("deviceCheck:edit");
         sysPermissionList.add("deviceCheck:delete");
@@ -62,6 +90,11 @@ public class FirstController
         sysPermissionList.add("deviceMaintain:add");
         sysPermissionList.add("deviceMaintain:edit");
         sysPermissionList.add("deviceMaintain:delete");
+
+
+        /**
+         * the next four module`s author:Lishuo
+         */
 
         //工艺监控-工艺管理
         sysPermissionList.add("technology:add");
@@ -79,6 +112,19 @@ public class FirstController
         sysPermissionList.add("process:add");
         sysPermissionList.add("process:edit");
         sysPermissionList.add("process:delete");
+
+        //物料监控-物料信息
+        sysPermissionList.add("material:add");
+        sysPermissionList.add("material:edit");
+        sysPermissionList.add("material:delete");
+        //物料监控-物料收入
+        sysPermissionList.add("materialReceive:add");
+        sysPermissionList.add("materialReceive:edit");
+        sysPermissionList.add("materialReceive:delete");
+        //物料监控-物料消耗
+        sysPermissionList.add("materialConsume:add");
+        sysPermissionList.add("materialConsume:edit");
+        sysPermissionList.add("materialConsume:delete");
 
         session.setAttribute("sysPermissionList",sysPermissionList);
         return "home";

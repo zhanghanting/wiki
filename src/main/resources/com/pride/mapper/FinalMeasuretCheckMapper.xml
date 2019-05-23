@@ -32,7 +32,59 @@
 			employee
 		where final_measuret_check.emp_id = employee.emp_id
 	</select>
+  <!-- 批量删除 -->
+  <delete id="deleteBatch">
+    DELETE
+    FROM
+    final_measuret_check
+    WHERE
+    f_measure_check_id IN
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+  <select id="searchFMeasureCheckByfMeasureCheckId" resultMap="AddResultMap">
+		SELECT
+			f_measure_check_id ,
+			final_measuret_check.order_id,
+			check_item,
+			cdate,
+			measure_data,
+			final_measuret_check.emp_id,
+			emp_name,
+			result,
+			final_measuret_check.note
+		FROM
+			final_measuret_check,
+			employee
+		where final_measuret_check.emp_id = employee.emp_id
+		AND f_measure_check_id like CONCAT('%',#{fMeasureCheckId},'%' )
+	</select>
 
+  <select id="searchFMeasureCheckByOrderId"  resultMap="AddResultMap">
+		SELECT
+			f_measure_check_id ,
+			final_measuret_check.order_id,
+			check_item,
+			cdate,
+			measure_data,
+			final_measuret_check.emp_id,
+			emp_name,
+			result,
+			final_measuret_check.note
+		FROM
+			final_measuret_check,
+			employee
+		where final_measuret_check.emp_id = employee.emp_id
+		AND final_measuret_check.order_id like CONCAT('%',#{orderId},'%' )
+	</select>
+  <!-- 修改备注-->
+  <update id="updateNote">
+		UPDATE final_measuret_check
+		SET note = #{note}
+		WHERE
+			f_measure_check_id = #{fMeasureCheckId}
+	</update>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
